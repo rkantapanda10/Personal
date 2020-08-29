@@ -1,0 +1,93 @@
+Scala
+
+// The Avro records are converted to Spark types, filtered, and
+// then written back out as Avro records
+val df = spark.read.format("avro").load("/tmp/episodes.avro")
+df.filter("doctor > 5").write.format("avro").save("/tmp/output")
+
+=============
+This example demonstrates a custom Avro schema:
+Scala
+import org.apache.avro.Schema
+
+val schema = new Schema.Parser().parse(new File("episode.avsc"))
+
+spark
+  .read
+  .format("avro")
+  .option("avroSchema", schema.toString)
+  .load("/tmp/episodes.avro")
+  .show()
+  
+ ==============
+This example demonstrates Avro compression options:
+Scala
+// configuration to use deflate compression
+spark.conf.set("spark.sql.avro.compression.codec", "deflate")
+spark.conf.set("spark.sql.avro.deflate.level", "5")
+
+val df = spark.read.format("avro").load("/tmp/episodes.avro")
+
+// writes out compressed Avro records
+df.write.format("avro").save("/tmp/output")
+This example demonstrates partitioned Avro records:
+=============
+Scala
+
+import org.apache.spark.sql.SparkSession
+
+val spark = SparkSession.builder().master("local").getOrCreate()
+
+val df = spark.createDataFrame(
+  Seq(
+    (2012, 8, "Batman", 9.8),
+    (2012, 8, "Hero", 8.7),
+    (2012, 7, "Robot", 5.5),
+    (2011, 7, "Git", 2.0))
+  ).toDF("year", "month", "title", "rating")
+
+df.toDF.write.format("avro").partitionBy("year", "month").save("/tmp/output")
+This example demonstrates the record name and namespace:
+=============
+Scala
+
+val df = spark.read.format("avro").load("/tmp/episodes.avro")
+
+val name = "AvroTest"
+val namespace = "org.foo"
+val parameters = Map("recordName" -> name, "recordNamespace" -> namespace)
+
+df.write.options(parameters).format("avro").save("/tmp/output")
+=============
+Python
+
+# Create a DataFrame from a specified directory
+df = spark.read.format("avro").load("/tmp/episodes.avro")
+
+#  Saves the subset of the Avro records read in
+subset = df.where("doctor > 5")
+subset.write.format("avro").save("/tmp/output")
+
+===============
+To query Avro data in SQL, register the data file as a table or temporary view:
+SQL
+
+CREATE TEMPORARY VIEW episodes
+USING avro
+OPTIONS (path "/tmp/episodes.avro")
+
+SELECT * from episodes
+
+================================================================OR============================================
+scala> import org.apache.spark.sql.SQLContext
+scala> import com.databricks.spark.avro._
+
+scala> val sqlContext = new SQLContext(sc)
+
+scala> val df = sqlContext.read.avro("<avfo file path>")
+scala> df.count()
+scala> df.first()
+scala> df.printSchema()
+
+scala> val setipv6=df.select($"requestURI", $"requestIP").filter("requestURI = 'setLocation'").filter($"requestIP" contains ":")
+scala> setipv6.repartition(1).rdd.saveAsTextFile("/tmp/setLocationIPv6")
