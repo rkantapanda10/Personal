@@ -1,26 +1,29 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0" version="25.0.3">
   <diagram name="Page-1" id="_a9yzd3-AFGbZOxPDSo3">
-    <mxGraphModel dx="872" dy="437" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1246" dy="624" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="u9j7EzL_o40ju1fafX8Q-1" value="cp s3 epoc" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="230" y="191" width="120" height="60" as="geometry" />
+          <mxGeometry x="153" y="189" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="u9j7EzL_o40ju1fafX8Q-2" value="s3 raw" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="364" y="187" width="120" height="60" as="geometry" />
+          <mxGeometry x="287" y="185" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="u9j7EzL_o40ju1fafX8Q-3" value="gw s3" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="102" y="191" width="120" height="60" as="geometry" />
+          <mxGeometry x="25" y="189" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="u9j7EzL_o40ju1fafX8Q-4" value="EVENT_BRIDGE_UAT_GWCC_EOD_2019" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="364" y="96" width="372" height="60" as="geometry" />
+          <mxGeometry x="287" y="94" width="503" height="60" as="geometry" />
         </mxCell>
         <mxCell id="u9j7EzL_o40ju1fafX8Q-5" value="s3 bronze" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="494" y="187" width="120" height="60" as="geometry" />
+          <mxGeometry x="417" y="185" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="u9j7EzL_o40ju1fafX8Q-6" value="s3 silver" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="623" y="185" width="120" height="60" as="geometry" />
+          <mxGeometry x="546" y="183" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nFJ65wPW0g0gDGoskRhN-1" value="sql server" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="671" y="183" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
